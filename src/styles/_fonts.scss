@@ -1,0 +1,29 @@
+:root {
+	// Fonts
+
+	// Base variables
+	--font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+		sans-serif;
+	--font-family-monospace: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', Menlo,
+		Consolas, monospace;
+	--font-size-xxs: calc(1rem * 13 / 16);
+	--font-size-xs: calc(1rem * 14 / 16);
+	--font-size-s: calc(1rem * 15 / 16);
+	--font-size-m: 1rem; // Base font size is 16px in virtually every browser
+	--font-size-l: calc(1rem * 20 / 16);
+	--font-size-xl: calc(1rem * 24 / 16);
+	--font-size-xxl: calc(1rem * 32 / 16);
+	--line-height-normal: 1.3;
+
+	// Semantic variables
+	--font-family-primary: var(--font-family-sans-serif);
+	--font-family-password-input: var(--font-family-monospace);
+	--font-size-text: var(--font-size-m);
+	--font-size-heading: var(--font-size-xxl);
+	--font-size-author-link: var(--font-size-xxs);
+	--font-size-password-label: var(--font-size-l);
+	--font-size-password-input: var(--font-size-xl);
+	--font-size-reveal-passwords: var(--font-size-xs);
+	--font-size-match-status: var(--font-size-xl);
+	--line-height-app-text: var(--line-height-normal);
+}

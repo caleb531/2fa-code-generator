@@ -1,0 +1,57 @@
+{
+	"name": "2fa-code-generator",
+	"version": "1.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test": "vitest run",
+		"coverage": "vitest run --coverage",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^3.0.0",
+		"@sveltejs/kit": "^2.0.3",
+		"@sveltejs/vite-plugin-svelte": "^3.0.1",
+		"@testing-library/jest-dom": "^6.1.5",
+		"@testing-library/svelte": "^4.0.5",
+		"@testing-library/user-event": "^14.5.1",
+		"@types/jest": "^29.5.11",
+		"@typescript-eslint/eslint-plugin": "^6.15.0",
+		"@typescript-eslint/parser": "^6.15.0",
+		"@vitest/coverage-v8": "^1.1.0",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-jest": "^27.6.0",
+		"eslint-plugin-svelte": "^2.35.1",
+		"jest-preview": "^0.3.1",
+		"jsdom": "^23.0.1",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"sass": "^1.69.5",
+		"svelte": "^4.2.8",
+		"svelte-check": "^3.6.2",
+		"tslib": "^2.6.2",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.10",
+		"vitest": "^1.0.4"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"author": "Caleb Evans",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/caleb531/2fa-code-generator/issues"
+	},
+	"homepage": "https://github.com/caleb531/2fa-code-generator#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caleb531/2fa-code-generator.git"
+	}
+}
