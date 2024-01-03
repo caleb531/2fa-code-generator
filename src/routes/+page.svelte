@@ -1,5 +1,10 @@
 <script lang="ts">
 	import '../styles/index.scss';
+	import Field from './Field.svelte';
+	import RevealSecretToggle from './RevealSecretToggle.svelte';
+	import Secret from './Secret.svelte';
+
+	let isSecretRevealed = false;
 </script>
 
 <svelte:head>
@@ -20,7 +25,14 @@
 		do just that!
 	</p>
 
-	<!-- TODO: create form here -->
+	<form>
+		<Field id="secret">
+			<Secret reveal={isSecretRevealed} />
+		</Field>
+		<Field id="reveal">
+			<RevealSecretToggle bind:enabled={isSecretRevealed} />
+		</Field>
+	</form>
 
 	<p class="disclaimer">
 		<strong>Disclaimer:</strong> Nothing you type here is sent or stored anywhere. The entire

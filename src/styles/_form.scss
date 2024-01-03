@@ -1,8 +1,12 @@
 form {
 	margin: 0 auto;
-	text-align: right;
+	text-align: left;
+}
+
+.field {
+	margin: 0;
 }
 
 label {
-	font-size: var(--font-size-password-label);
+	font-size: var(--font-size-label);
 }
