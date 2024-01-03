@@ -1,9 +1,11 @@
 <script lang="ts">
 	import '../styles/index.scss';
+	import Code from './Code.svelte';
 	import Field from './Field.svelte';
 	import RevealSecretToggle from './RevealSecretToggle.svelte';
 	import Secret from './Secret.svelte';
 
+	let secret = '';
 	let isSecretRevealed = false;
 </script>
 
@@ -27,10 +29,13 @@
 
 	<form>
 		<Field id="secret">
-			<Secret reveal={isSecretRevealed} />
+			<Secret bind:value={secret} reveal={isSecretRevealed} />
 		</Field>
 		<Field id="reveal">
 			<RevealSecretToggle bind:enabled={isSecretRevealed} />
+		</Field>
+		<Field id="code">
+			<Code {secret} />
 		</Field>
 	</form>
 
