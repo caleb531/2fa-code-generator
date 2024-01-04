@@ -2,7 +2,6 @@
 	import { getOTPLib } from '$lib';
 
 	export let secret: string;
-
 	let code: string;
 
 	async function generateCode(secret: string) {
