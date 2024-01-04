@@ -1,7 +1,43 @@
 .code-container {
-	text-align: center;
+	display: flex;
+	width: fit-content;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 30px auto;
 	font-size: var(--font-size-2fa-code);
 }
 .loading {
 	color: var(--color-loading);
+}
+
+.code-countdown {
+	visibility: hidden;
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	&.visible {
+		visibility: visible;
+	}
+}
+.code-countdown-bar-wrapper {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.code-countdown-bar {
+	display: inline-block;
+	width: calc(var(--percent-time-remaining) * 100%);
+	background-color: hsl(calc(var(--percent-time-remaining) * 90), 75%, 50%);
+	height: 20px;
+	transition-property: width, background-color;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in-out;
+	border-radius: 3px;
+}
+.code-countdown-count {
+	text-align: right;
+	min-width: 24px;
+	font-size: var(--font-size-2fa-code-countdown-count);
 }
