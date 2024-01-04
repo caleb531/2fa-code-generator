@@ -1,4 +1,8 @@
 .code-container {
+	--2fa-code-padding-h: 5px;
+	--2fa-code-padding-v: 3px;
+	--2fa-code-countdown-margin-top: 3px;
+	position: relative;
 	display: flex;
 	width: fit-content;
 	flex-direction: column;
@@ -6,9 +10,37 @@
 	align-items: center;
 	margin: 30px auto;
 	font-size: var(--font-size-2fa-code);
+	line-height: 1;
 }
-.loading {
+.code.loading {
 	color: var(--color-loading);
+}
+@keyframes flash {
+	0% {
+		filter: brightness(150%);
+	}
+	100% {
+		filter: brightness(100%);
+	}
+}
+.code {
+	position: relative;
+	border-width: 0;
+	border-radius: 5px;
+	padding: var(--2fa-code-padding-v) var(--2fa-code-padding-h);
+	background: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	&:hover,
+	&.copied {
+		background-color: var(--color-2fa-code-hover);
+		box-shadow: 0 0 0 2px var(--color-2fa-code-hover);
+		cursor: pointer;
+	}
+	&.copied {
+		animation: flash 750ms ease-in-out forwards;
+	}
 }
 
 .code-countdown {
@@ -17,6 +49,10 @@
 	display: inline-flex;
 	justify-content: space-between;
 	align-items: center;
+	position: relative;
+	z-index: 10;
+	margin-top: var(--2fa-code-countdown-margin-top);
+	padding: var(--2fa-code-padding-v) var(--2fa-code-padding-h);
 	&.visible {
 		visibility: visible;
 	}
@@ -30,7 +66,7 @@
 	display: inline-block;
 	width: calc(var(--percent-time-remaining) * 100%);
 	background-color: hsl(calc(var(--percent-time-remaining) * 90), 75%, 50%);
-	height: 20px;
+	height: 16px;
 	transition-property: width, background-color;
 	transition-duration: 150ms;
 	transition-timing-function: ease-in-out;
@@ -40,4 +76,27 @@
 	text-align: right;
 	min-width: 24px;
 	font-size: var(--font-size-2fa-code-countdown-count);
+}
+
+.copy-to-clipboard-message {
+	pointer-events: none;
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	min-width: 100%;
+	font-size: var(--font-size-copy-to-clipboard-message);
+	text-align: center;
+	user-select: none;
+	color: var(--color-copy-to-clipboard-message);
+	transition-property: visibility, opacity, transform;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(100%);
+	.code:hover + & {
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(-5px);
+	}
 }

@@ -8,10 +8,23 @@
 	// The number of milliseconds to wait before re-rendering the countdown or
 	// checking if the code is still valid
 	const VERIFY_DELAY = 500;
+	// The number of milliseconds to display the "Copied!" message after copying the code to the clipboard
+	const COPIED_TO_CLIPBOARD_DELAY = 750;
 
 	export let secret: string;
 	let code: string;
 	let timeRemaining: number;
+	let copiedToClipboard = false;
+
+	async function copyCodeToClipboard(event: Event) {
+		event.preventDefault();
+		const element = event.currentTarget as HTMLElement;
+		await navigator.clipboard.writeText(element.innerText);
+		copiedToClipboard = true;
+		setTimeout(() => {
+			copiedToClipboard = false;
+		}, COPIED_TO_CLIPBOARD_DELAY);
+	}
 
 	function calculateTimeRemaining() {
 		return TIME_STEP - ((Date.now() / 1000) % TIME_STEP);
@@ -43,11 +56,22 @@
 </script>
 
 <div class="code-container">
-	{#if code}
-		<div class="code">{code}</div>
-	{:else}
-		<div class="loading">Loading...</div>
-	{/if}
+	<button
+		class="code"
+		class:loading={!Boolean(code)}
+		class:copied={copiedToClipboard}
+		on:click={copyCodeToClipboard}
+		tabindex="0"
+	>
+		{code || 'Loading...'}
+	</button>
+	<div class="copy-to-clipboard-message">
+		{#if copiedToClipboard}
+			Copied!
+		{:else}
+			Click to copy
+		{/if}
+	</div>
 	<div class="code-countdown" class:visible={timeRemaining !== undefined}>
 		<div class="code-countdown-bar-wrapper">
 			<div
