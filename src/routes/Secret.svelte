@@ -19,5 +19,6 @@
 	class="secret"
 	type={reveal ? 'text' : 'password'}
 	placeholder="Your 2FA secret"
+	{value}
 	on:input={updateValue}
 />
