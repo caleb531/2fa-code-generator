@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getOTPLib } from '$lib';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	// The number of seconds a 2FA code will last before we must generate a new
 	// code
@@ -23,10 +23,16 @@
 		timeRemaining = calculateTimeRemaining();
 	}
 
+	let timer: ReturnType<typeof setInterval>;
+
 	onMount(() => {
-		setInterval(() => {
+		timer = setInterval(() => {
 			generateCode(secret);
 		}, VERIFY_DELAY);
+	});
+
+	onDestroy(() => {
+		clearInterval(timer);
 	});
 
 	$: {
