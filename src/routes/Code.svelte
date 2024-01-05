@@ -49,21 +49,20 @@
 	});
 
 	$: {
-		if (typeof window !== 'undefined') {
+		if (typeof window !== 'undefined' && secret !== '') {
 			generateCode(secret);
 		}
 	}
 </script>
 
-<div class="code-container">
+<div class="code-container" class:visible={Boolean(secret)}>
 	<button
 		class="code"
-		class:loading={!Boolean(code)}
 		class:copied={copiedToClipboard}
 		on:click={copyCodeToClipboard}
 		tabindex="0"
 	>
-		{code || 'Loading...'}
+		{code}
 	</button>
 	<div class="copy-to-clipboard-message">
 		{#if copiedToClipboard}
