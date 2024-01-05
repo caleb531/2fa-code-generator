@@ -10,6 +10,14 @@ body {
 	line-height: var(--line-height-app-text);
 	color: var(--color-app-text);
 }
+// The `style="display: contents;"` default style in app.html causes a CSP
+// violation, and because this is a security-conscious application, using
+// 'unsafe-inline` or 'unsafe-hashes' is not an option; fortunately, we can move
+// that style to our stylesheet instead, provided we add a class to the element
+// (which we've done)
+.app-wrapper {
+	display: contents;
+}
 .app {
 	margin: 0 auto;
 	max-width: 550px;
