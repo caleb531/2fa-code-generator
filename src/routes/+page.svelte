@@ -12,6 +12,7 @@
 
 <svelte:head>
 	<title>2FA Code Generator | Caleb Evans</title>
+	<meta name="apple-mobile-web-app-title" content="2FA Code Gen" />
 	<meta
 		name="description"
 		content="Have a handwritten 2FA secret and need to generate a 2FA code from it? This is a secure place to do just that!"
@@ -24,8 +25,8 @@
 	<a class="author-link" href="https://calebevans.me/"><span class="by">by</span> Caleb Evans</a>
 
 	<p>
-		Have a handwritten 2FA secret and need to generate a 2FA code from it? This is a secure place to
-		do just that!
+		Have a handwritten 2FA secret and need to generate a 2FA code from it? This is a secure
+		place to do just that!
 	</p>
 
 	<form>
