@@ -35,7 +35,7 @@
 	border-radius: 5px;
 	padding: var(--2fa-code-padding-v) var(--2fa-code-padding-h);
 	background: none;
-	font-family: inherit;
+	font-family: var(--font-family-2fa-code);
 	font-size: inherit;
 	color: inherit;
 	&:hover,
