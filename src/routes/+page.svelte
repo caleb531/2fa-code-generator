@@ -5,8 +5,7 @@
 	import RevealSecretToggle from './RevealSecretToggle.svelte';
 	import Secret from './Secret.svelte';
 
-	// TODO: blank out this default secret once we are ready for production
-	let secret = 'abcdefghijklmnopqrstuvqwyz';
+	let secret = '';
 	let isSecretRevealed = false;
 </script>
 
