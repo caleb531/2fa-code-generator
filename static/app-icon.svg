@@ -7,8 +7,6 @@
 		<!-- lock icon handle -->
 		<path id="lock-handle" d="M -2,0 A 2,2,0,0,1,2,0" />
 	</defs>
-	<!-- canvas background -->
-	<rect x="0" y="0" width="100%" height="100%" fill="#fff" />
 	<!-- 2FA code bullets -->
 	<use xlink:href="#bullet" x="7.339745962155615"  y="21" fill="hsl(30, 75%, 50%)" />
 	<use xlink:href="#bullet" x="7.339745962155613"  y="11" fill="hsl(15, 75%, 50%)" />
