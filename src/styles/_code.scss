@@ -13,9 +13,6 @@
 	margin: 30px auto;
 	font-size: var(--font-size-2fa-code);
 	line-height: 1;
-	transition-property: visibility, opacity;
-	transition-duration: 150ms;
-	transition-timing-function: ease-in-out;
 	&.visible {
 		visibility: visible;
 		opacity: 1;
@@ -73,9 +70,6 @@
 	width: calc(var(--percent-time-remaining) * 100%);
 	background-color: hsl(calc(var(--percent-time-remaining) * 90), 75%, 50%);
 	height: 16px;
-	transition-property: width, background-color;
-	transition-duration: 150ms;
-	transition-timing-function: ease-in-out;
 	border-radius: 3px;
 }
 .code-countdown-count {
@@ -94,9 +88,6 @@
 	text-align: center;
 	user-select: none;
 	color: var(--color-copy-to-clipboard-message);
-	transition-property: visibility, opacity, transform;
-	transition-duration: 150ms;
-	transition-timing-function: ease-in-out;
 	visibility: hidden;
 	opacity: 0;
 	transform: translateY(100%);
