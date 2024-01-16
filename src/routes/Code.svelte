@@ -16,6 +16,8 @@
 	let timeRemaining: number;
 	let copiedToClipboard = false;
 
+	// The event handler to copy the contents of the clicked element (i.e. the
+	// 2FA code) to the clipboard
 	async function copyCodeToClipboard(event: Event) {
 		event.preventDefault();
 		const element = event.currentTarget as HTMLElement;
@@ -26,10 +28,14 @@
 		}, COPIED_TO_CLIPBOARD_DELAY);
 	}
 
+	// Calculate the number of seconds remaining before the 2FA code expires
 	function calculateTimeRemaining() {
 		return TIME_STEP - ((Date.now() / 1000) % TIME_STEP);
 	}
 
+	// Generate the 2FA code corresponding to the given TOTP secret and the
+	// current time; also recompute the number of seconds remaining before the
+	// code expires
 	async function generateCode(secret: string) {
 		const { totp } = await getOTPLib();
 		code = totp.generate(secret);
@@ -38,18 +44,24 @@
 
 	let timer: ReturnType<typeof setInterval>;
 
+	// Re-render the 2FA code on a regular interval to re-calculate the time
+	// remaining
 	onMount(() => {
 		timer = setInterval(() => {
 			generateCode(secret);
 		}, VERIFY_DELAY);
 	});
 
+	// Cancel the internal timer when the component is unmounted
 	onDestroy(() => {
 		clearInterval(timer);
 	});
 
 	$: {
+		// If the component is in a browser context (i.e. not SSR)
 		if (typeof window !== 'undefined' && secret !== '') {
+			// Generate the 2FA code when the component initially mounts and
+			// whenever the secret changes
 			generateCode(secret);
 		}
 	}

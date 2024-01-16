@@ -1,4 +1,5 @@
 <script lang="ts">
+	// Whether the secret is currently revealed
 	export let enabled: boolean;
 </script>
 

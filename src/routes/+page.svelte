@@ -5,6 +5,7 @@
 	import RevealSecretToggle from './RevealSecretToggle.svelte';
 	import Secret from './Secret.svelte';
 
+	// Manage application state at the page level
 	let secret = '';
 	let isSecretRevealed = false;
 </script>
