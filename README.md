@@ -6,7 +6,7 @@ _Released under the MIT license_
 A simple application which serves as a secure space for you to generate a 2FA
 code from a secret.
 
-<!-- Live App: https://projects.calebevans.me/2fa-code-generator/ -->
+Live App: https://projects.calebevans.me/2fa-code-generator/
 
 ## Setup
 
