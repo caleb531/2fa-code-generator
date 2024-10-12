@@ -8,7 +8,12 @@ export default defineConfig({
 		globals: true,
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 		coverage: {
-			exclude: ['build', '*.config.js', ...coverageConfigDefaults.exclude],
+			exclude: [
+				'build',
+				'*.config.js',
+				'src/routes/+layout.ts',
+				...coverageConfigDefaults.exclude
+			],
 			reporter: ['text', 'lcov', 'html', 'text-summary']
 		}
 	}

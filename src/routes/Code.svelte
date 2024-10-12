@@ -69,6 +69,8 @@
 
 <div class="code-container" class:visible={Boolean(secret)}>
 	<button
+		type="button"
+		aria-label="Code"
 		class="code"
 		class:copied={copiedToClipboard}
 		on:click={copyCodeToClipboard}

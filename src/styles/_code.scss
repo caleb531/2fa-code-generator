@@ -84,6 +84,8 @@
 	bottom: 100%;
 	left: 0;
 	min-width: 100%;
+	border-width: 0;
+	background: none;
 	font-size: var(--font-size-copy-to-clipboard-message);
 	text-align: center;
 	user-select: none;
