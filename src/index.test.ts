@@ -15,7 +15,7 @@ describe('2FA Code Generator functionality', () => {
 	it('should populate the secret input', async () => {
 		render(page);
 		const secretInput = await screen.findByLabelText('Secret:');
-		const secretValue = 'MySecret123';
+		const secretValue = 'JR7AX4O5BF5OOE44';
 		await userEvent.type(secretInput, secretValue);
 		expect(secretInput).toHaveValue(secretValue);
 	});
@@ -23,7 +23,7 @@ describe('2FA Code Generator functionality', () => {
 	it('should display the generated code after entering a secret', async () => {
 		render(page);
 		const secretInput = await screen.findByLabelText('Secret:');
-		const secretValue = 'MySecret123';
+		const secretValue = 'JR7AX4O5BF5OOE44';
 		await userEvent.type(secretInput, secretValue);
 
 		// Wait for the code to be generated
@@ -40,7 +40,7 @@ describe('2FA Code Generator functionality', () => {
 		});
 		render(page);
 		const secretInput = await screen.findByLabelText('Secret:');
-		const secretValue = 'MySecret123';
+		const secretValue = 'PEAVA3WN4ZMBYQUS';
 		await userEvent.type(secretInput, secretValue);
 
 		const codeButton = await screen.findByLabelText('Code');

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getOTPLib } from '$lib';
 	import { onDestroy, onMount } from 'svelte';
+	import { TOTP } from 'totp-generator';
 
 	// The number of seconds a 2FA code will last before we must generate a new
 	// code
@@ -37,8 +37,7 @@
 	// current time; also recompute the number of seconds remaining before the
 	// code expires
 	async function generateCode(secret: string) {
-		const { totp } = await getOTPLib();
-		code = totp.generate(secret);
+		code = TOTP.generate(secret).otp;
 		timeRemaining = calculateTimeRemaining();
 	}
 

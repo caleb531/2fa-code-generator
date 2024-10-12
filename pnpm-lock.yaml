@@ -9,9 +9,9 @@ overrides:
   cookie@<0.7.0: '>=0.7.0'
 
 dependencies:
-  '@otplib/preset-browser':
-    specifier: ^12.0.1
-    version: 12.0.1
+  totp-generator:
+    specifier: ^1.0.0
+    version: 1.0.0
 
 devDependencies:
   '@eslint/js':
@@ -692,10 +692,6 @@ packages:
       '@otplib/core': 12.0.1
       thirty-two: 1.0.2
     dev: true
-
-  /@otplib/preset-browser@12.0.1:
-    resolution: {integrity: sha512-64Eb6JLRRcER2NuIIVQIVNb3yn4mJLUwN1i3icmmNpTS+r4izwdM3eQs9wbeRjjX46kgfMZqPFYsC9JuGM0TKw==}
-    dev: false
 
   /@otplib/preset-default@12.0.1:
     resolution: {integrity: sha512-xf1v9oOJRyXfluBhMdpOkr+bsE+Irt+0D5uHtvg6x1eosfmHCsCC6ej/m7FXiWqdo0+ZUI6xSKDhJwc8yfiOPQ==}
@@ -3052,6 +3048,10 @@ packages:
     hasBin: true
     dev: true
 
+  /jssha@3.3.1:
+    resolution: {integrity: sha512-VCMZj12FCFMQYcFLPRm/0lOBbLi8uM2BhXPTqw3U4YAfs4AZfiApOoBLoN8cQE60Z50m1MYMTQVCfgF/KaCVhQ==}
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -4063,6 +4063,12 @@ packages:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
     dev: true
+
+  /totp-generator@1.0.0:
+    resolution: {integrity: sha512-Iu/1Lk60/MH8FE+5cDWPiGbwKK1hxzSq+KT9oSqhZ1BEczGIKGcN50bP0WMLiIZKRg7t29iWLxw6f81TICQdoA==}
+    dependencies:
+      jssha: 3.3.1
+    dev: false
 
   /tough-cookie@5.0.0:
     resolution: {integrity: sha512-FRKsF7cz96xIIeMZ82ehjC3xW2E+O2+v11udrDYewUbszngYhsGa8z6YUMMzO9QJZzzyd0nGGXnML/TReX6W8Q==}
