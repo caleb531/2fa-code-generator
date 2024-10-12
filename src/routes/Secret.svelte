@@ -9,7 +9,7 @@
 	// simply listen for the input's `input` event and update the variable
 	// accordingly
 	function updateValue(event: Event & { currentTarget: HTMLInputElement }) {
-		value = event.currentTarget.value ?? '';
+		value = event.currentTarget.value;
 	}
 </script>
 
