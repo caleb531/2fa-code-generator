@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { onDestroy, onMount } from 'svelte';
 	import { TOTP } from 'totp-generator';
 
@@ -11,10 +13,14 @@
 	// The number of milliseconds to display the "Copied!" message after copying the code to the clipboard
 	const COPIED_TO_CLIPBOARD_DELAY = 750;
 
-	export let secret: string;
-	let code: string;
-	let timeRemaining: number;
-	let copiedToClipboard = false;
+	interface Props {
+		secret: string;
+	}
+
+	let { secret }: Props = $props();
+	let code: string = $state();
+	let timeRemaining: number = $state();
+	let copiedToClipboard = $state(false);
 
 	// The event handler to copy the contents of the clicked element (i.e. the
 	// 2FA code) to the clipboard
@@ -56,14 +62,14 @@
 		clearInterval(timer);
 	});
 
-	$: {
+	run(() => {
 		// If the component is in a browser context (i.e. not SSR)
 		if (typeof window !== 'undefined' && secret !== '') {
 			// Generate the 2FA code when the component initially mounts and
 			// whenever the secret changes
 			generateCode(secret);
 		}
-	}
+	});
 </script>
 
 <div class="code-container" class:visible={Boolean(secret)}>
@@ -72,7 +78,7 @@
 		aria-label="Code"
 		class="code"
 		class:copied={copiedToClipboard}
-		on:click={copyCodeToClipboard}
+		onclick={copyCodeToClipboard}
 		tabindex="0"
 	>
 		{code}

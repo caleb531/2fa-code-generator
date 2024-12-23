@@ -1,6 +1,11 @@
 <script lang="ts">
-	// Whether the secret is currently revealed
-	export let enabled: boolean;
+	
+	interface Props {
+		// Whether the secret is currently revealed
+		enabled: boolean;
+	}
+
+	let { enabled = $bindable() }: Props = $props();
 </script>
 
 <label for="reveal">Reveal secret?</label>

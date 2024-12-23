@@ -1,7 +1,12 @@
 <script lang="ts">
-	export let value: string;
-	// Whether or not the actual secret is shown within the input
-	export let reveal = false;
+	
+	interface Props {
+		value: string;
+		// Whether or not the actual secret is shown within the input
+		reveal?: boolean;
+	}
+
+	let { value = $bindable(), reveal = false }: Props = $props();
 
 	// Svelte prohibits us from binding to the input's `value` attribute
 	// directly because the input type is not static (see
@@ -20,5 +25,5 @@
 	type={reveal ? 'text' : 'password'}
 	placeholder="Your 2FA secret"
 	{value}
-	on:input={updateValue}
+	oninput={updateValue}
 />

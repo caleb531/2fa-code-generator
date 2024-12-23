@@ -6,8 +6,8 @@
 	import Secret from './Secret.svelte';
 
 	// Manage application state at the page level
-	let secret = '';
-	let isSecretRevealed = false;
+	let secret = $state('');
+	let isSecretRevealed = $state(false);
 </script>
 
 <svelte:head>
