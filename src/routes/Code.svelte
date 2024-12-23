@@ -84,10 +84,14 @@
 	</div>
 	<div class="code-countdown" class:visible={timeRemaining !== undefined}>
 		<div class="code-countdown-bar-wrapper">
-			<div
-				class="code-countdown-bar"
-				style:--percent-time-remaining={Math.ceil(timeRemaining || 0) / TIME_STEP}
-			></div>
+			{#if timeRemaining}
+				<div
+					class="code-countdown-bar"
+					style:--percent-time-remaining={Math.ceil(timeRemaining || 0) / TIME_STEP}
+				></div>
+			{:else}
+				<div class="code-countdown-bar"></div>
+			{/if}
 		</div>
 		<div class="code-countdown-count">{Math.ceil(timeRemaining || 0)}</div>
 	</div>
