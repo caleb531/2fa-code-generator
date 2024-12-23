@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
-	import { onDestroy, onMount } from 'svelte';
 	import { TOTP } from 'totp-generator';
 
 	// The number of seconds a 2FA code will last before we must generate a new
@@ -18,8 +15,8 @@
 	}
 
 	let { secret }: Props = $props();
-	let code: string = $state();
-	let timeRemaining: number = $state();
+	let code: string = $state('-');
+	let timeRemaining: number | undefined = $state();
 	let copiedToClipboard = $state(false);
 
 	// The event handler to copy the contents of the clicked element (i.e. the
@@ -42,7 +39,7 @@
 	// Generate the 2FA code corresponding to the given TOTP secret and the
 	// current time; also recompute the number of seconds remaining before the
 	// code expires
-	async function generateCode(secret: string) {
+	function generateCode(secret: string) {
 		code = TOTP.generate(secret).otp;
 		timeRemaining = calculateTimeRemaining();
 	}
@@ -51,24 +48,19 @@
 
 	// Re-render the 2FA code on a regular interval to re-calculate the time
 	// remaining
-	onMount(() => {
+	$effect(() => {
 		timer = setInterval(() => {
 			generateCode(secret);
 		}, VERIFY_DELAY);
+		return () => {
+			// Cancel the internal timer when the component is unmounted
+			clearInterval(timer);
+		};
 	});
 
-	// Cancel the internal timer when the component is unmounted
-	onDestroy(() => {
-		clearInterval(timer);
-	});
-
-	run(() => {
-		// If the component is in a browser context (i.e. not SSR)
-		if (typeof window !== 'undefined' && secret !== '') {
-			// Generate the 2FA code when the component initially mounts and
-			// whenever the secret changes
-			generateCode(secret);
-		}
+	// Immediately regenerate code whenever secret changes
+	$effect(() => {
+		generateCode(secret);
 	});
 </script>
 
@@ -94,9 +86,9 @@
 		<div class="code-countdown-bar-wrapper">
 			<div
 				class="code-countdown-bar"
-				style:--percent-time-remaining={Math.ceil(timeRemaining) / TIME_STEP}
+				style:--percent-time-remaining={Math.ceil(timeRemaining || 0) / TIME_STEP}
 			></div>
 		</div>
-		<div class="code-countdown-count">{Math.ceil(timeRemaining)}</div>
+		<div class="code-countdown-count">{Math.ceil(timeRemaining || 0)}</div>
 	</div>
 </div>
