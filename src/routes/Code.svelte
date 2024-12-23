@@ -36,11 +36,19 @@
 		return TIME_STEP - ((Date.now() / 1000) % TIME_STEP);
 	}
 
+	// Normalize the supplied TOTP secret by removing any whitespace; the TOTP
+	// generatation library was throwing an error any time the secret contained
+	// whitespace, so by stripping all whitespace from the secret as a
+	// preliminary step, we effectively prevent that error from ever occurring
+	function normalizeSecret(secret: string) {
+		return String(secret).replace(/\s+/g, '');
+	}
+
 	// Generate the 2FA code corresponding to the given TOTP secret and the
 	// current time; also recompute the number of seconds remaining before the
 	// code expires
 	function generateCode(secret: string) {
-		code = TOTP.generate(secret).otp;
+		code = TOTP.generate(normalizeSecret(secret)).otp;
 		timeRemaining = calculateTimeRemaining();
 	}
 
