@@ -63,6 +63,11 @@
 		"overrides": {
 			"got@<11.8.5": ">=11.8.5",
 			"cookie@<0.7.0": ">=0.7.0"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"esbuild",
+			"jest-preview"
+		]
 	}
 }
