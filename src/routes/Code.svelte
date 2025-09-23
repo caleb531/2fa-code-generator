@@ -47,8 +47,8 @@
 	// Generate the 2FA code corresponding to the given TOTP secret and the
 	// current time; also recompute the number of seconds remaining before the
 	// code expires
-	function generateCode(secret: string) {
-		code = TOTP.generate(normalizeSecret(secret)).otp;
+	async function generateCode(secret: string) {
+		code = (await TOTP.generate(normalizeSecret(secret))).otp;
 		timeRemaining = calculateTimeRemaining();
 	}
 
