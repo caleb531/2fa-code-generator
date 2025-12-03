@@ -1,5 +1,4 @@
 <script lang="ts">
-	
 	interface Props {
 		// Whether the secret is currently revealed
 		enabled: boolean;

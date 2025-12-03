@@ -1,5 +1,4 @@
 <script lang="ts">
-	
 	interface Props {
 		value: string;
 		// Whether or not the actual secret is shown within the input
