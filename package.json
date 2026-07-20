@@ -62,7 +62,7 @@
 	"pnpm": {
 		"overrides": {
 			"got@<11.8.5": ">=11.8.5",
-			"cookie@<0.7.0": ">=0.7.0",
+			"cookie@<0.7.0": "0.7.2",
 			"esbuild@>=0.27.3 <0.28.1": ">=0.28.1"
 		},
 		"onlyBuiltDependencies": [
