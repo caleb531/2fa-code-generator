@@ -44,9 +44,9 @@
 	<p class="disclaimer">
 		<strong>Disclaimer:</strong> Nothing you type here is sent or stored anywhere. The entire
 		project is open-source, and you can
-		<a href="https://github.com/caleb531/2fa-code-generator" target="_blank" rel="noopener"
-			>browse the source code on GitHub</a
-		>
+		<a href="https://github.com/caleb531/2fa-code-generator" target="_blank" rel="noopener">
+			browse the source code on GitHub
+		</a>
 		if you'd like to see how it works.
 	</p>
 </main>
